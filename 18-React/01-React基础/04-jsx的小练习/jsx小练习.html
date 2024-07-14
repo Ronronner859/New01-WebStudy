@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+<!-- 容器 -->
+    <div id="test"></div>
+
+    <!-- 核心库 -->
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <!-- 用于将jsx转成js -->
+    <script src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+        //模拟一些数据
+        const data = ['jks','react','vue']
+        // 创建虚拟dom
+        // 注意js表达式和js语句代码的区分
+        /*
+        1.表达式：一个表达式会产生一个值，可以放在任意一个需要值的地方
+         （1）变量名
+         （2）a+b
+         （3) demo（1）
+         （4) arr.map() 有返回值
+         （5）function t()
+         2.语句
+            （1) if
+            （2）for
+             (3) switch
+
+         */
+        const vdom = (
+            <div>
+                <h1 className="title">react</h1>
+                <ul>
+                    {
+                        data.map((item,id)=>{
+                            return <li key={id}>{id}-{item}</li>
+                        })
+                    }
+                </ul>
+            </div>
+        )
+    ReactDOM.render(vdom,document.getElementById('test'))
+    </script>
+</body>
+
+</html>
