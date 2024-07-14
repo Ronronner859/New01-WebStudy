@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>state</title>
+</head>
+<body>
+    <div id="test"></div>
+
+    <!-- 核心库 -->
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <!-- 用于将jsx转成js -->
+    <script src="../js/babel.min.js"></script>
+
+    <script></script>
+    <!--        babel 在这开启了严格模式-->
+    <script type="text/babel">
+        // let vals
+        //类式组件  继承内置组件
+        class Weather  extends React.Component{
+            // 构造器调用几次-- 1次
+            // 初始化通过类的构造器
+            constructor(props) {
+                super(props);
+                // 初始化状态
+                this.state = {isHot:false,wind:"微分"}
+                // vals = this
+                // 拿原型上的 生成一个新的 挂到原型自身  解决this指向问题
+                console.log(this.changeWeather)
+                this.demo = this.changeWeather.bind(this)
+            }
+            //     changeWeather放在了哪儿？ 原型对象上，供实例使用
+            //     通过Weather实例调用changeWeather时，changeWeather中的this就是Weather实例
+            // render调了几次 1 + n次  n为状态更新的次数
+            render(){
+                console.log(this)
+                const  {isHot} = this.state
+                return <h1 onClick={this.demo}>今天天气很{isHot ? '炎热':'凉爽'}</h1>
+            }
+
+           changeWeather(){
+                // alert('按钮3被点击了')
+                // console.log(this)
+               //     changeWeather放在了哪儿？ 原型对象上，供实例使用
+               //    changeWeather是作为onclick的回调，不是通过实例调用的，是直接调用
+               // 类中的方法默认的开启了局部的严格模式，所以changeWeather中的this为undefined
+                const  isHot = this.state.isHot
+               // 状态不可以直接更改 这就是直接更改 需要借助一个内置的api更改
+               // this.state.isHot = !isHot 错误的写法 必须通过setState更改 更新是一张合并
+              this.setState({isHot:!isHot})
+            }
+        }
+        ReactDOM.render(<Weather/>,document.getElementById('test'))
+        // title.addEventListener('click',()=>{
+        //     console.log('helllo')
+        // })
+
+        // title.onclick = ()=>{
+        //     console.log('helllo')
+        // }
+
+    </script>
+</body>
+</html>

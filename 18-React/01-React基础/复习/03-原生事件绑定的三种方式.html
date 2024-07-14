@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原生事件绑定的三种方式</title>
+</head>
+<body>
+    <div id="bt1">按钮1</div>
+    <div id="bt2">按钮2</div>
+    <button onclick="demo()">按钮3</button>
+
+
+    <script>
+        const bt1 = document.getElementById('bt1')
+        bt1.addEventListener('click',()=>{
+            alert('按钮1被点击了')
+        })
+
+
+        const bt2 = document.getElementById('bt2')
+        bt2.onclick = ()=>{
+            alert('按钮2被点击了')
+        }
+
+        function demo(){
+            alert('按钮3被点击了')
+        }
+
+    </script>
+</body>
+</html>
