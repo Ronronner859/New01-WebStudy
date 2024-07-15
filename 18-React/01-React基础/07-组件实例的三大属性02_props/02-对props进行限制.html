@@ -26,7 +26,9 @@
 
                     return (
                         <ul>
-                            <li>姓名: {name}</li>
+                            <li onClick={()=>{
+                                    console.log(1);
+                            }}>姓名: {name}</li>
                             <li>年龄：{age+1}</li>
                             <li>性别：{this.props.sex}</li>
                         </ul>
@@ -42,6 +44,7 @@
                 age:PropTypes.number,
                 f:PropTypes.func
             }
+            // 指定默认标签属性值
             Person.defaultProps = {
                 sex:'hello'
             }
