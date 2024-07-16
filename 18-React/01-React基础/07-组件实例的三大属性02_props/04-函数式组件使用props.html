@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <div id="test"></div>
+        <div id="test1"></div>
+        <div id="test2"></div>
+
+
+        <!-- 核心库 -->
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <!-- 用于将jsx转成js -->
+        <script src="../js/babel.min.js"></script>
+        <script src="../js/prop-types.js"></script>
+
+        <script type="text/babel">
+                // class Person extends React.Component {
+                //         /*
+                //          对标签属性 类型 必要性的限制
+                //           */
+                //         static propTypes = {
+                //                 name: PropTypes.string.isRequired,
+                //                 sex: PropTypes.string,
+                //                 age: PropTypes.number,
+                //                 f: PropTypes.func
+                //         }
+                //         // 指定默认标签属性值
+                //         static defaultProps = {
+                //                 sex: 'hello'
+                //         };
+                //
+                //         render() {
+                //                 // console.log(this)
+                //                 const {name, age, sex} = this.props
+                //                 // props只允许读不允许改
+                //                 //     this.props.name = 'jack' 错误的写法
+                //                 return (
+                //                         <ul>
+                //                                 <li onClick={() => {
+                //                                         console.log(1);
+                //                                 }}>姓名: {name}</li>
+                //                                 <li>年龄：{age + 1}</li>
+                //                                 <li>性别：{this.props.sex}</li>
+                //                         </ul>
+                //                 )
+                //         }
+                // }
+
+                function Person(props) {
+                        const {name,sex,age} = props
+                        return (
+                                <ul>
+                                        <li>姓名: {name}</li>
+                                        <li>年龄：{age}</li>
+                                        <li>性别：{sex}</li>
+                                </ul>
+                        )
+                }
+
+                Person.propTypes = {
+                        name: PropTypes.string.isRequired,
+                        sex: PropTypes.string,
+                        age: PropTypes.number,
+                        f: PropTypes.func
+                };
+
+
+                        // 指定默认标签属性值
+                        Person.defaultProps = {
+                                sex: 'hello'
+                        };
+            ReactDOM.render(<Person name="jack"  age={123}/>,document.getElementById('test'))
+
+        </script>
+</body>
+</html>

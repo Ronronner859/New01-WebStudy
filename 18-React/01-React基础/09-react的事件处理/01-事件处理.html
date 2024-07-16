@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ref</title>
+</head>
+<body>
+    <div id="test"></div>
+    <!-- 核心库 -->
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <!-- 用于将jsx转成js -->
+    <script src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+        //创建组件
+        class Demo extends React.Component {
+            myRef = React.createRef()  //React.createRef调用后可以返回一个容器，该容器可以存储被ref所标识的节点,该容器专人专用的
+            myRef2 = React.createRef()
+            state = {isHot:true}
+            showInfo = () => {
+                const {input1} = this
+                // alert(input1.value)
+                console.log(this.myRef )
+                alert(this.myRef.current.value)
+            };
+            showInfo2 = (event) => {
+                console.log(event.target.value)
+                console.log(this.myRef2 )
+                alert(this.myRef2.current.value)
+            };
+            render() {
+                return (
+                    <div>
+                        {/*<input ref={(currentNode)=>{this.input1  = currentNode}} type="text" placeholder="点击按钮提示"/>&nbsp;*/}
+                        <input ref={this.myRef} type="text"/>
+                        <button onClick={this.showInfo}>点我提示数据</button>&nbsp;
+                        <input onBlur={this.showInfo2} ref={this.myRef2} type="text"/>
+                    </div>
+                );
+            }
+
+        }
+    //     渲染组件到页面
+        ReactDOM.render(<Demo a={1} b={2} />,document.getElementById('test'))
+    </script>
+
+
+</body>
+</html>

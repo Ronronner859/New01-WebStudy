@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <div id="test"></div>
+        <div id="test1"></div>
+        <div id="test2"></div>
+
+
+        <!-- 核心库 -->
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <!-- 用于将jsx转成js -->
+        <script src="../js/babel.min.js"></script>
+        <script src="../js/prop-types.js"></script>
+
+        <script type="text/babel">
+                class Person extends React.Component {
+                        /**
+                         * 构造器函数：
+                         *      1.初始化内部state
+                         *      2.为事件处理函数绑定实例
+                         * @param props
+                         */
+                        constructor(props) {
+                                super(props);
+                                // 构造器是否接收props，是否传递给super，取决于是否希望在构造器中通过this访问props
+                                console.log('11')
+                                console.log(props)
+                                console.log('11')
+                                console.log(this.props)
+                        }
+                        /*
+                         对标签属性 类型 必要性的限制
+                          */
+                        static propTypes = {
+                                name: PropTypes.string.isRequired,
+                                sex: PropTypes.string,
+                                age: PropTypes.number,
+                                f: PropTypes.func
+                        }
+                        // 指定默认标签属性值
+                        static defaultProps = {
+                                sex: 'hello'
+                        };
+
+                        render() {
+                                // console.log(this)
+                                const {name, age, sex} = this.props
+                                // props只允许读不允许改
+                                //     this.props.name = 'jack' 错误的写法
+                                return (
+                                        <ul>
+                                                <li onClick={() => {
+                                                        console.log(1);
+                                                }}>姓名: {name}</li>
+                                                <li>年龄：{age + 1}</li>
+                                                <li>性别：{this.props.sex}</li>
+                                        </ul>
+                                )
+                        }
+                }
+
+            const  p = {name:'zhang',age:12,sex:'男'}
+            // ReactDOM.render(<Person name={p.name} age={p.age} sex={p.sex}/>,document.getElementById('test1'))
+            ReactDOM.render(<Person {...p}/>,document.getElementById('test'))
+            // 批量的传递标签属性
+            ReactDOM.render(<Person name="jack" age={12} />,document.getElementById('test1'))
+            ReactDOM.render(<Person name="tom2" age={22} sex="男"/>,document.getElementById('test2'))
+            function f() {
+                console.log('hello world')
+            }
+        </script>
+</body>
+</html>

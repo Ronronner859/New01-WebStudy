@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ref</title>
+</head>
+<body>
+    <div id="test"></div>
+    <!-- 核心库 -->
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <!-- 用于将jsx转成js -->
+    <script src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+        //创建组件
+        class Login extends React.Component {
+
+            handleSubmit = (e) => {
+                e.preventDefault() //阻止表达提交的默认事件
+                /*
+                受控组件：现用现取
+                 */
+                const {username,password} = this
+                alert(`${username.value}  --- ${password.value}`)
+            };
+            render() {
+                return (
+                    <div>
+                        <form action="http://cysir.icu" onSubmit={this.handleSubmit}>
+                            用户名： <input   ref={c => this.username = c} type="text" name="username"/>
+                            密码： <input ref={c => this.password = c} type="password" name="password"/> &nbsp;
+                            <button>登录</button>
+                        </form>
+                    </div>
+                );
+            }
+
+        }
+    //     渲染组件到页面
+        ReactDOM.render(<Login />,document.getElementById('test'))
+    </script>
+
+
+</body>
+</html>
