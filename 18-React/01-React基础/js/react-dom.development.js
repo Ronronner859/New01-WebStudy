@@ -3677,7 +3677,7 @@ if (canUseDOM) {
 /**
  * (For IE <=9) Starts tracking propertychange events on the passed-in element
  * and override the value property so that we can distinguish user events from
- * value changes in JS.
+ * value changes in 03-JS.
  */
 function startWatchingForValueChange(target, targetInst) {
   activeElement = target;
@@ -3718,7 +3718,7 @@ function handleEventsForInputEventPolyfill(topLevelType, target, targetInst) {
     // appears to fire in all of the remaining cases so we catch those and
     // forward the event if the value has changed
     // In either case, we don't want to call the event handler if the value
-    // is changed from JS so we redefine a setter for `.value` that updates
+    // is changed from 03-JS so we redefine a setter for `.value` that updates
     // our activeElementValue variable, allowing us to ignore those changes
     //
     // stopWatching() should be a noop here but we call it just in case we
@@ -17200,7 +17200,7 @@ function logCapturedError(capturedError) {
     var combinedMessage = '' + componentNameMessage + componentStack + '\n\n' + ('' + errorBoundaryMessage);
 
     // In development, we provide our own message with just the component stack.
-    // We don't include the original error message and JS stack because the browser
+    // We don't include the original error message and 03-JS stack because the browser
     // has already printed it. Even if the application swallows the error, it is still
     // displayed by the browser thanks to the DEV-only fake event trick in ReactErrorUtils.
     console.error(combinedMessage);

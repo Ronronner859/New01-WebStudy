@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ref</title>
+</head>
+<body>
+<div id="test"></div>
+<!-- 核心库 -->
+<script src="../js/react.development.js"></script>
+<script src="../js/react-dom.development.js"></script>
+<!-- 用于将jsx转成js -->
+<script src="../js/babel.min.js"></script>
+
+<script type="text/babel">
+    //创建组件
+    class Life extends React.Component {
+        state = {opacity:1}
+        demo = () => {
+
+            ReactDOM.unmountComponentAtNode(document.getElementById('test'))
+        };
+        //组件完成挂载
+        componentDidMount(){
+            console.log('comDid')
+            this.timer = setInterval(() => {
+                let {opacity} = this.state;
+                opacity -= 0.1
+                if (opacity <= 0) opacity = 1
+                this.setState({opacity})
+            }, 200);
+        }
+
+        // 组件将要卸载
+        componentWillUnmount(){
+            clearInterval(this.timer)
+        }
+        // changeDemo = () => {
+        //     setInterval(() => {
+        //         let {opacity} = this.state;
+        //         opacity -= 0.1
+        //         if(opacity<=0) opacity = 1
+        //         this.setState({opacity})
+        //
+        //     },200);
+        // }
+        // 渲染更新之后
+        render() {
+            console.log('render')
+            return (
+                <div>
+                    <h1 style={{opacity:this.state.opacity}}> 学不会怎么办</h1>
+                    <button onClick={this.demo}>不想活了</button>
+                    {/* <button onClick={this.changeDemo}>开始变化</button>*/}
+                </div>
+            );
+        }
+
+    }
+    //     渲染组件到页面
+    ReactDOM.render(<Life />,document.getElementById('test'))
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>testing</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src *; connect-src * ws://* wss://*; style-src * 'unsafe-inline' 'unsafe-eval'; media-src * ; img-src * data:; font-src * ; script-src * 'unsafe-inline' 'unsafe-eval';" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<div id="test"></div>
+<!-- 核心库 -->
+<script src="../18/react.development.js"></script>
+<script src="../18/react-dom.development.js"></script>
+<!-- 用于将jsx转成js -->
+<script src="../18/babel.min.js"></script>
+
+<script type="text/babel">
+    class Count extends React.Component {
+
+        render() {
+            console.log('render')
+            return (
+                <div>
+
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<Count/>,document.getElementById('test'))
+</script>
+
+
+</body>
+</html>

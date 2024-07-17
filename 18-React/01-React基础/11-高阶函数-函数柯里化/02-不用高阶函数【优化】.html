@@ -33,12 +33,9 @@
         常见的高阶函数有:Promise、setTimeOut  js数组
         函数的柯里化:通过函数调用继续返回两数的方式，实现多次接收参数最后统一处理的函数编码形式。
          */
-        saveFormData = (dataType) => {
+        saveFormData = (dataType,event) => {
             console.log(dataType)
-            return (event) => {
-                this.setState({[dataType]: event.target.value})
-            }
-            // this.setState({password:e.target.value})
+            this.setState({[dataType]:event.target.value})
         };
         handleSubmit = (e) => {
             e.preventDefault() //阻止表达提交的默认事件
@@ -53,8 +50,8 @@
             return (
                 <div>
                     <form action="http://cysir.icu" onSubmit={this.handleSubmit}>
-                        用户名： <input onChange={this.saveFormData('username')} type="text" name="username"/>
-                        密码： <input onChange={this.saveFormData('password')} type="password" name="password"/> &nbsp;
+                        用户名： <input onChange={(event)=>{this.saveFormData('username',event)}} type="text" name="username"/>
+                        密码： <input onChange={(event)=>{this.saveFormData('password',event)}} type="password" name="password"/> &nbsp;
                         <button>登录</button>
                     </form>
                 </div>

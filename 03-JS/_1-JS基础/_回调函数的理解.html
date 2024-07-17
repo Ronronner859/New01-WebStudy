@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>_回调函数</title>
+</head>
+<body>
+    <script>
+        /**
+         *
+         * @param fn
+         * 什么是回调函数?
+         *  简单理解就是函数作为另一个函数的参数，去执行该函数
+         */
+        //函数作为参数
+        function foo(fn) {
+            // 通过fn去调用bar函数的这个过程就称为函数的 回调
+            fn()
+        }
+
+        function bar(){
+            console.log('bar函数被执行了')
+        }
+        foo(bar)
+
+    //     回调函数的案例
+    //     function resquest(url,callback){
+    //         console.log("异步发送请求，利用callback处理返回结果")
+    //         let arr = ['js', 'css', 'html'];
+    //         callback(arr)
+    //     }
+    //     function handleResquest(list){
+    //         console.log(list)
+    //     }
+    //     resquest('http://localhost:8080',handleResquest)
+
+    //     回调函数的重构
+
+            function resquest(url,callback){
+                console.log("异步发送请求，利用callback处理返回结果")
+                let arr = ['js', 'css', 'html'];
+                callback(arr)
+            }
+            // 函数没有名字 为匿名函数 如果在传入一个函数时，我们没有指定这个函数的名词或者通过函数表达式指定函数对应的变那么这个函数称之为匿名函数。
+            resquest('http://localhost:8080',function(list){
+                console.log(list)
+            })
+
+    </script>
+</body>
+</html>
