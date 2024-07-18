@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="./lib/Vue.js"></script>
+
+</head>
+<body>
+        <h2>你好</h2>
+        <h1>当前计数：<span class="counter"></span></h1>
+        <button @click="fn1" class="add">+1</button>
+        <button @click="fn2" class="sub">-1</button>
+    <script>
+//        1.获取DOM
+        const countH1 = document.querySelector('h1')
+        const countH2 = document.querySelector('.counter')
+        const addBtn = document.querySelector('.add')
+        const subBtn = document.querySelector('.sub')
+
+        // 2.定义变量
+        let counter = 0
+        countH2.textContent = counter
+
+        // 3.监听按钮的点击
+        addBtn.addEventListener('click', function () {
+            counter++
+            countH2.textContent = counter
+        })
+        subBtn.addEventListener('click', function () {
+            counter--
+            countH2.textContent = counter
+        })
+    </script>
+</body>
+</html>

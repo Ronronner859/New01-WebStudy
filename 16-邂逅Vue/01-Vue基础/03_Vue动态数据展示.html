@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="./lib/Vue.js"></script>
+
+</head>
+<body>
+    <h2>你好</h2>
+    <div id="app"></div>
+    <!--    <script src="https://unpkg.com/vue@next"></script>-->
+    <script>
+        let title = "hello world"
+        // 插值语法{{}}
+        // 不手动操作dom的情况下 将一些数据直接渲染到页面上
+        // 声明式开发模式
+        const  app = Vue.createApp({
+            template:`<h1>{{ title }}---{{msg}}</h1>`,
+            data:function () {
+                return {
+                    title:title,
+                    msg:"chenyi"
+                };
+            }
+        })
+        console.log(app)
+        // 挂载
+        app.mount("#app")
+    </script>
+</body>
+</html>

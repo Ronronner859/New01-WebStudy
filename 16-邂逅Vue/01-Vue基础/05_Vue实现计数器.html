@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="./lib/Vue.js"></script>
+
+</head>
+<body>
+    <h2>你好</h2>
+    <div id="app"></div>
+    <script>
+        let title = "hello world"
+        const app = Vue.createApp({
+            template:`<h1>当前计数：{{counter}}</h1>
+                <button @click="fn1">+1</button>
+                <button @click="fn2">-1</button>
+            `,
+            data:function () {
+                return {
+                    counter:0
+                };
+            },
+            methods:{
+                fn1:function (){
+                    this.counter++
+                },
+                fn2:function (){
+                    this.counter--
+                }
+            }
+        })
+        console.log(app)
+        // 挂载
+        app.mount("#app")
+    </script>
+</body>
+</html>

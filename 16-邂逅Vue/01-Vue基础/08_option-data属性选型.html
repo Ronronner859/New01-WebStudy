@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="./lib/Vue.js"></script>
+
+</head>
+<body>
+<h2>你好</h2>
+<div id="app">
+    <h1>{{msg}}</h1>
+    <button @click="changeName">改变</button>
+</div>
+<script>
+    /*
+    data属性是传入一个函数，并且该函数需要返回一个对象:
+        在Vue2.x的时候，也可以传入一个对象(虽然官方推荐是一个函数)
+        在Vue3.x的时候，必须传入一个函数，否则就会直接在浏览器中报错;
+     */
+    const app = Vue.createApp({
+        // 必须是一个函数
+        data:function (){
+            return{
+                msg:"hello world"
+            }
+        },
+        methods:{
+            changeName:function (){
+                this.msg="hello world chenyi"
+            }
+        }
+    })
+    console.log(app)
+    // 挂载
+    app.mount("#app")
+</script>
+</body>
+</html>

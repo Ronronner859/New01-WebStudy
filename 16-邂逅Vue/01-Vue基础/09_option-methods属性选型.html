@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="./lib/Vue.js"></script>
+
+</head>
+<body>
+<h2>你好</h2>
+<div id="app">
+    <h1>当前计数：{{counter}}</h1>
+    <button @click="fn1">+1</button>
+    <button @click="fn2">-1</button>
+</div>
+<script>
+    const app = Vue.createApp({
+        data:function () {
+            return {
+                counter:0
+            };
+        },
+        methods:{
+            fn1:function (){
+                // 源码已经给你绑定this了
+                this.counter++
+                console.log(this)  //Proxy(Object) {fn1: ƒ, fn2: ƒ, …}
+            },
+            // es6的写法
+            // methods中的方法不能写成箭头函数
+            // 因为箭头函数的作用域是指向父级的this 而不会指向组件实例 那么通过this拿到的数据都是undefined
+            fn2(){
+                this.counter--
+            }
+
+        }
+    })
+    console.log(app)
+    // 挂载
+    app.mount("#app")
+</script>
+</body>
+</html>
