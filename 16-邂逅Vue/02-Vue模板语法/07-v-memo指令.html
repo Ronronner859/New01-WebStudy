@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <script src="./lib/Vue.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+        <h2>你好</h2>
+        <div id="app">
+<!--            当[]更新的话 后续的才能更新  做性能优化 -->
+            <div v-memo="[name,age]">
+                <h1>{{name}}</h1>
+                <h1>{{age}}</h1>
+                <h1>{{height}}</h1>
+            </div>
+            <button @click="update">改变</button>
+        </div> 
+        <script>
+               const app = Vue.createApp({
+                   data() {
+                       return {
+                           name:"chenyi",
+                           age:22,
+                           height:1.88
+                       }
+                   },
+                   methods:{
+                       update:function (){
+                           this.age = 123
+                       }
+                   }
+               });
+               console.log(app);
+               // 挂载
+               app.mount('#app');
+        </script>
+</body>
+</html>
+

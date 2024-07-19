@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定事件的基本使用</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <script src="../lib/Vue.js"></script>
+    <div id="app">
+        <div class="box" @click="divClick">
+            <button @click.stop="btnClick">按钮</button>
+        </div>
+    </div>
+    <script>
+//        v-on支持修饰符 修饰符相当于对事件进行了一些特殊的处理!
+        const app = Vue.createApp({
+            data(){
+                return {
+                    message:"hello world",
+                }
+            },
+            methods:{
+                btnClick(e){
+                    // e.stopPropagation()
+                    console.log('btnClick')
+                },
+                divClick(){
+                    console.log('divClick')
+                }
+            }
+        })
+        app.mount('#app');
+    </script>
+</body>
+</html>

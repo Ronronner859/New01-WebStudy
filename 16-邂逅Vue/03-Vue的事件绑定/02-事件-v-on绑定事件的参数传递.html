@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定事件的基本使用</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <script src="../lib/Vue.js"></script>
+    <button>按钮</button>
+    <div id="app">
+        <h1 class="box" >{{message}}</h1>
+<!--        // 1.默认传递event对象 如果该方法不需要额外参数，那么方法后的()可以不添加。如果方法本身中有一个参数，那么会默认将原生事件event参数传递进去-->
+        <button @click="changeMsg">按钮1</button>
+
+<!--        2.明确的参数-->
+        <button @click="changeMsg2('why',num)">按钮2</button>
+
+<!--        3.明确参数 + event对象  明确的获取对象必须为：$event 如果需要同时传入某个参数，同时需要event时，可以通过$event传入事件。-->
+        <button @click="changeMsg3($event,'why',num)">按钮23</button>
+
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return {
+                    message:"hello world",
+                    num:1
+                }
+            },
+            methods:{
+                // 总结:如果在绑定事件的时候，没有传递任何的参数，那么event对象会被默认传递进来
+                // 1.默认传递event对象
+                changeMsg(event){
+                    console.log(event)
+                },
+                changeMsg2(name,age){
+                    console.log(name)
+                    console.log(age)
+                    console.log('changeMsg2')
+                },
+                changeMsg3(event,name,age){
+                    console.log(event)
+                    console.log(name)
+                    console.log(age)
+                    console.log('changeMsg2')
+                },
+            }
+        })
+        app.mount('#app');
+
+        const  btn = document.querySelector('button')
+        btn.addEventListener('click',(event)=>{
+            console.log(event)
+        })
+    </script>
+</body>
+</html>

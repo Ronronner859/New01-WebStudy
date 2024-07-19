@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <script src="./lib/Vue.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+
+        <div id="app">
+                <!--绑定对象:给组件传递参数-->
+            <h1 v-bind="obj">哈哈哈哈</h1>
+        </div>
+        <script>
+               const app = Vue.createApp({
+                   data() {
+                       return {
+                           obj:{
+                                name:'why',
+                                age:12,
+                                height:1.55
+                            }
+                       }
+                   },
+                   methods:{
+
+                   }
+               });
+
+               app.mount('#app');
+        </script>
+</body>
+</html>
+

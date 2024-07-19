@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <script src="./lib/Vue.js"></script>
+</head>
+<body>
+<h2>你好</h2>
+<!--
+        1.表达式
+        2.三木运算符
+-->
+        <div id="app">
+            {{msg}}
+            {{count*100}}
+            {{info.split(" ")}}
+            {{age>10 ?"11":"2121"}}
+            {{date()}}
+        </div>
+        <script>
+            const app = Vue.createApp({
+                data() {
+                    return {
+                        msg: 'Hello World!',
+                        count: 100,
+                        info: 'my name is hello',
+                        age:22
+                    }
+                },
+                methods:{
+                    date:function (){
+                        return '100000'
+                    }
+                }
+            });
+            console.log(app);
+            // 挂载
+            app.mount('#app');
+        </script>
+</body>
+</html>
+

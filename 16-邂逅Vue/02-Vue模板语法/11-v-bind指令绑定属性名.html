@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <script src="./lib/Vue.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+
+        <div id="app">
+
+            <h1 :[name]="'aaaa'">哈哈哈哈</h1>
+        </div>
+        <script>
+               const app = Vue.createApp({
+                   data() {
+                       return {
+                           name:"class"
+                       }
+                   },
+                   methods:{
+
+                   }
+               });
+
+               app.mount('#app');
+        </script>
+</body>
+</html>
+

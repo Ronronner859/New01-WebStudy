@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <script src="./lib/Vue.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+        <h2>你好</h2>
+<!--        但是，除了内容需要动态来决定外，某些属性我们也希望动态来绑定。-->
+        <div id="app">
+            <div>
+                <h1>{{name}}</h1>
+                <img  :src="url" alt="">
+<!--                有很多的，比如图片的链接src、网站的链接href、动态绑定一些类、样式等等 -->
+                <a :href="href">百度一下</a>
+            </div>
+            <button @click="update">改变</button>
+        </div> 
+        <script>
+               const app = Vue.createApp({
+                   data() {
+                       return {
+                           name:"chenyi",
+                           url:"https://www.neu.edu.cn/images/dangdaihuinew.jpg",
+                           href:"https://www.neu.edu.cn/",
+                           url2:"https://www.neu.edu.cn/images/2696de7a-6d24-4272-a7b2-7466a35d17d4.jpg",
+                       }
+                   },
+                   methods:{
+                       update:function (){
+                           this.href="https://cysir.icu";
+                           this.url = this.url === this.url2 ? this.url : this.url2
+                       }
+                   }
+               });
+               console.log(app);
+               // 挂载
+               app.mount('#app');
+        </script>
+</body>
+</html>
+

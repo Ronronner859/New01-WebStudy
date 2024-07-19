@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <script src="./lib/Vue.js"></script>
+    <style>
+        .active{
+            color:red;
+        }
+        .demo{
+            font-size: 30px;
+            font-family: "Agency FB";
+        }
+    </style>
+</head>
+<body>
+
+        <div id="app">
+<!--            2.1.动态绑定style，在后面跟上:对象类型-->
+<!--            单引号 或者 驼峰-->
+<!--            CSS property 名可以用驼峰式(camelCase)或短横线分隔(kebab-case， 记得用引号括起来)来命名;-->
+            <h1 :style="{color:fontColor,fontSize:fontSize}">hello world</h1>
+<!--            动态的绑定属性，这个属性是一个对象-->
+            <h2 :style="objStyle">chenyi</h2>
+<!--            动态的绑定属性，这个属性是一个数组-->
+            <h2 :style="[objStyle,{fontFamily:'Agency FB'}]">呵呵哈哈哈</h2>
+        </div>
+        <script>
+               const app = Vue.createApp({
+                   data() {
+                       return {
+                           fontColor:"green",
+                           fontSize:'60px',
+                           objStyle:{
+                               color:'green',
+                               fontSize: '100px'
+                           }
+                       }
+                   },
+                   methods:{
+                        btnClick:function (){
+                            this.isActive = !this.isActive
+                        },
+                       getDynamicClass:function (){
+                            return {active:this.isActive,why:true}
+                       }
+                   }
+               });
+
+               app.mount('#app');
+        </script>
+</body>
+</html>
+

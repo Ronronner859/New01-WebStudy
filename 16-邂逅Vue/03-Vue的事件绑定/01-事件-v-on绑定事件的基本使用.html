@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定事件的基本使用</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <script src="../lib/Vue.js"></script>
+
+    <div id="app">
+<!--       1. v-on 绑定事件的 v-bind是绑定属性的-->
+        <h1 class="box" >{{message}}</h1>
+        <button v-on:click="changeMsg">改变</button>
+
+<!--        2.语法糖写法 @  重点-->
+        <div @click="changeMsg">{{message}}</div>
+
+<!--        3.绑定的位置，也可以实现一个表达式(不常用、不推荐)-->
+        <h2>{{num}}</h2>
+        <button @click="increment">+1</button>
+        <button @click="num++">+1</button>
+
+<!--        4.绑定其他方法-->
+<!--        <div class="box" @mousemove="divMousemove" @click="divClick">mousemove</div>-->
+
+<!--        对象的形式-->
+        <div class="box" v-on="{click:divClick,mousemove:divMousemove}">哈哈</div>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return {
+                    message:"hello world",
+                    num:1
+                }
+            },
+            methods:{
+                changeMsg(){
+                    this.message="李四"
+                },
+                increment(){
+                    this.num++
+                },
+                divClick(){
+                    console.log('div')
+                },
+                divMousemove(){
+                    console.log('divMousemove')
+                }
+            }
+        })
+        app.mount('#app');
+    </script>
+</body>
+</html>
