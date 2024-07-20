@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定事件的基本使用</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+
+    <script src="../lib/Vue.js"></script>
+    <div id="app">
+<!--
+            template  无包裹元素，浏览器的渲染性能来说，会提高一点点性能
+
+            因为v-if是一个指令，所以必须将其添加到一个元素上:
+            口 但是如果我们希望切换的是多个元素呢?
+            口 此时我们渲染div，但是我们并不希望div这种元素被渲染;
+            口 这个时候，我们可以选择使用template;
+
+            tmplate元素可以当做不可见的包裹元素，并且在v-if上使用，但是最终template不会被渲染出来:
+            口 有点类似于小程序中的block
+-->
+        <template class="info" v-if="Object.keys(info).length">
+            <h2>个人信息</h2>
+            <ul>
+                <li>{{info.name}}</li>
+                <li>{{info.age}}</li>
+            </ul>
+        </template>
+        <template v-else>
+            <h1>无个人信息</h1>
+        </template>
+
+    </div>
+    <script>
+
+        const app = Vue.createApp({
+            data(){
+                return {
+                    info:{
+                        name:'zhangsan'
+                    }
+                }
+            },
+            methods:{
+            }
+        })
+        app.mount('#app');
+    </script>
+</body>
+</html>

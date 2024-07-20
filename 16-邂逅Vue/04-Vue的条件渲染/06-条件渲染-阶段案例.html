@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定事件的基本使用</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+
+    <script src="../lib/Vue.js"></script>
+    <div id="app">
+
+        <template class="info" v-if="Object.keys(info).length">
+            <h2>个人信息</h2>
+            <ul>
+                <li>{{info.name}}</li>
+                <li>{{info.age}}</li>
+            </ul>
+        </template>
+        <template v-else>
+            <h1>无个人信息</h1>
+        </template>
+
+    </div>
+    <script>
+
+        const app = Vue.createApp({
+            data(){
+                return {
+                    info:{
+                        name:'zhangsan'
+                    }
+                }
+            },
+            methods:{
+            }
+        })
+        app.mount('#app');
+    </script>
+</body>
+</html>
