@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script src="../lib/Vue.js"></script>
+    <div id="app">
+        <ul>
+            <li v-for="item in name">{{item}}</li>
+        </ul>
+        <button @click="changeNew">修改数组</button>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    name: ['a', 'b', 'c'],
+                }
+            },
+            methods: {
+                changeNew(){
+                    /**
+                     * Vue 将被侦听的数组的变更方法进行了包裹，所以它们也将会触发视图更新。
+                     * push
+                     * pop
+                     * shift: 删除第一个元素
+                     * unshift: 头部添加一个元素
+                     * splice:就地移除或者替换已存在的元素和/或添加新的元素。
+                     * sort:排序
+                     * reverse:反转
+                     */
+                //     1.直接将数组修改为新的数组
+                //     this.name = ['why', 'list', 'demo'];
+
+                //     2.通过数组的方法，修改数组中的元素
+                //     this.name.push('why')
+                //     this.name.pop()
+                //     this.name.shift()
+                //     this.name.unshift('hello')
+                //     this.name.splice(2,1,'why')
+
+
+                    // 不修改原数组的方法是不能侦听(watch)
+                //     map
+                }
+            }
+        })
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

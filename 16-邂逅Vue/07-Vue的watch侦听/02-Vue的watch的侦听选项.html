@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script src="../lib/Vue.js"></script>
+    <div id="app">
+        <h1>{{info.name}}</h1>
+        <button @click="changeInfo">修改info</button>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            // data option-api
+            data() {
+                return {
+                    info:{
+                        name:"chenyi",
+                        age:21
+                    }
+                }
+            },
+            methods: {
+                changeName(){
+
+                },
+                changeInfo(){
+                    // 创建一个新对象 给info
+                    // this.info = {name: 'kobe'}
+                //     直接该对象某个属性
+                    this.info.name = '李四'
+                }
+            },
+            computed: {
+
+            },
+            watch: {
+               //  默认watch监听不会深度监听的
+               // info(newValue,oldValue){
+               //     console.log(newValue,oldValue)
+               // }
+            //     进行深度监听的
+                info:{
+                    handler(newValue,oldValue){
+                        console.log(Vue.toRaw(newValue),oldValue)
+                        console.log(newValue === oldValue)
+                    },
+                    // info进行深度监听
+                    // 监听器选项
+                    deep:true,
+                //     第一次渲染 直接执行一次监听器
+                    immediate:true
+                },
+                // vue3中没有提到 vue2中有涉及到的
+                'info.name':function (newValue,oldValue) {
+                    console.log(Vue.toRaw(newValue),oldValue)
+                }
+            }
+        })
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

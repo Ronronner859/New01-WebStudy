@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script src="../lib/Vue.js"></script>
+    <div id="app">
+<!--       直接写名字即可-->
+        <h1>{{msg}}</h1>
+        <button @click="changeName">修改name</button>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            // data option-api
+            data() {
+                return {
+                //    1.姓名
+                    firstname:'kobe',
+                    lastname:"bryant",
+                //     2.分数
+                    score:90,
+                //     3.文本反转显示
+                    msg:"my name is why",
+                    info:{
+                        name:"chenyi",
+                        age:21
+                    }
+                }
+            },
+            methods: {
+                changeName(){
+                    this.msg = 'coder why';
+                    this.info = {name:'chen'}
+                }
+            },
+            computed: {
+
+            },
+            watch: {
+                // 1.默认两个参数：newValue oldValue
+                msg(newValue,oldValue) {
+                    console.log('msg变了',newValue,oldValue)
+                },
+                info(newValue,oldValue){
+                    // 如果是对象类型 是代理对象
+                    // console.log('info',newValue.name,oldValue)
+                //     获取原生对象  所有属性展开放入一个新的对象中
+                    console.log({...newValue})
+                //  获取本身对象 返回 Vue 创建的代理的原始对象。
+                    console.log(Vue.toRaw(newValue))
+                }
+            }
+        })
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script src="../lib/Vue.js"></script>
+    <div id="app">
+<!--       直接写名字即可-->
+        <h1>{{fullName}}</h1>
+
+        <h2>{{fullName}}</h2>
+
+        <h2>{{fullName}}</h2>
+
+        <h1>{{fullName2()}}</h1>
+        <h1>{{fullName2()}}</h1>
+        <h1>{{fullName2()}}</h1>
+
+        <button @click="changeName">修改name</button>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                //    1.姓名
+                    firstname:'kobe',
+                    lastname:"bryant",
+                //     2.分数
+                    score:90,
+                //     3.文本反转显示
+                    msg:"my name is why"
+                }
+            },
+            methods: {
+                fullName2(){
+                    // 执行三次
+                    console.log('fullname222')
+                    return this.firstname + " " + this.lastname
+                },
+                changeName(){
+                    this.lastname = 'hello'
+                }
+            },
+            computed: {
+                fullName(){
+                    // 执行一次
+                    console.log('fullname')
+                    return this.firstname + " " + this.lastname
+                }
+            }
+        })
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

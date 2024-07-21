@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        const module = {
+            x: 42,
+            getX: function () {
+                console.log('111')
+                return this.x;
+            },
+        };
+
+        /**
+         * unboundGetX 没有绑定到 module，所以 this 指向全局对象，导致返回 undefined。
+         * boundGetX 被绑定到 module，所以 this 指向 module，返回 42。
+         *
+         */
+        const unboundGetX = module.getX;
+        // 全局下调用unboundGetX是this会指向全局对象windows nodejs中指向global 全局中无x，输出undefined
+        console.log(unboundGetX()); // The function gets invoked at the global scope
+        // Expected output: undefined
+
+        // bind 方法创建了一个新的函数，该函数的 this 永远指向 module。
+        const boundGetX = unboundGetX.bind(module);
+        console.log(boundGetX());
+        // Expected output: 42
+
+    </script>
+</body>
+</html>

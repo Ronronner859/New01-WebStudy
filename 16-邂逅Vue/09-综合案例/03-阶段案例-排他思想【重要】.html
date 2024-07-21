@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .active{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="../lib/Vue.js"></script>
+    <div id="app">
+        <!--对active的class进行动态绑定-->
+        <!--需求一:将索引值郑的li添加_Lactive--->
+<!--        &lt;!&ndash;需求二:用一个变量(属性)记录当前点击的位置-->
+                <ul>
+                    <li v-for="(item,index) in names" :key="index" :class="{active:index === currenIndex}"
+                    @click="liClick(index)"
+                    >{{item}}</li>
+                </ul>
+            </div>
+            <script>
+                const app = Vue.createApp({
+                    data() {
+                        return {
+                            names:["12",'123','1234'],
+                            currenIndex:-1
+                        }
+                    },
+                    methods: {
+                        liClick(index){
+                            console.log(index)
+                            this.currenIndex = index
+                        }
+
+                    },
+                    computed: {
+
+                    }
+                })
+                app.mount("#app")
+            </script>
+        </body>
+
+        </html>

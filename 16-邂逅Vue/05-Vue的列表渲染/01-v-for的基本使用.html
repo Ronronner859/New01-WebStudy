@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+        
+        .item .title {
+            color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script src="../lib/Vue.js"></script>
+    <div id="app">
+        <h2>电影列表</h2>
+        <ul>
+            <li v-for="(item,index) in movies" :key="index">{{item}}---{{index}}</li>
+        </ul>
+        <!--            真实的开发 都是遍历的复杂数据-->
+        <h2>商品列表</h2>
+        <div class="item" v-for="item in products">
+            <h3 class="title">{{item.name}}</h3>
+            <span>价格：{{item.price}}</span>
+            <h2>描述：{{item.desc}}</h2>
+        </div>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    movies: ['john', 'jack', 'hello'],
+                    //     数组 数组中存放的对象
+                    products: [{
+                        id: 100,
+                        name: 'Macbook',
+                        price: 100,
+                        desc: '9.9'
+                    }, {
+                        id: 101,
+                        name: 'xiaomi',
+                        price: 102,
+                        desc: '9.9'
+                    }, {
+                        id: 102,
+                        name: 'huawei',
+                        price: 103,
+                        desc: '9.9'
+                    }, ]
+                }
+            },
+            methods: {
+
+            }
+        })
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

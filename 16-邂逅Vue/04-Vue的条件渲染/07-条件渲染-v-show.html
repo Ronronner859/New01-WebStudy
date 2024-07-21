@@ -18,9 +18,12 @@
         <div>
             <button @click="changeCode">切换</button>
         </div>
-       <template v-if="isCode">
+       <div v-show="isCode">
            <img src="https://tse2-mm.cn.bing.net/th/id/OIP-C.mH9YLFEL5YdVxJM82mjVJQHaEo?rs=1&pid=ImgDetMain" alt="">
-       </template>
+       </div>
+        <div v-if="isCode">
+            <img src="https://tse2-mm.cn.bing.net/th/id/OIP-C.mH9YLFEL5YdVxJM82mjVJQHaEo?rs=1&pid=ImgDetMain" alt="">
+        </div>
     </div>
     <script>
 

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script src="../lib/Vue.js"></script>
+    <div id="app">
+<!--       直接写名字即可-->
+        <h1>{{fullName}}</h1>
+
+        <h2>{{}}</h2>
+
+        <h2>{{}}</h2>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                //    1.姓名
+                    firstname:'kobe',
+                    lastname:"bryant",
+                //     2.分数
+                    score:90,
+                //     3.文本反转显示
+                    msg:"my name is why"
+                }
+            },
+            methods: {
+
+            },
+            computed: {
+                fullName(){
+                    return this.firstname + " " + this.lastname
+                }
+            }
+        })
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

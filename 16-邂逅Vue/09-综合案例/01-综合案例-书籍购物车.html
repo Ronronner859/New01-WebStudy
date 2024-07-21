@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        th,td{
+            border: 1px solid black;
+            padding: 10px 18px;
+        }
+        thead{
+            background-color: skyblue;
+        }
+        table{
+            border-collapse: collapse;
+            font-weight: bold;
+            text-align: center;
+        }
+        .active{
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script src="../lib/Vue.js"></script>
+    <div id="app">
+        <template v-if="books.length">
+            <table>
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>书籍名称</th>
+                    <th>出版日期</th>
+                    <th>价格</th>
+                    <th>购买数量</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="(item,index) in books" :key="index" :class="{active:index === currentIndex}" @click="trClick(index)">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.date}}</td>
+                    <td>{{formatPrice(item.price)}}</td>
+                    <td>
+                        <!--                        动态绑定属性 bind-->
+                        <button :disabled="item.counts <=1" @click="subtract(index,item)">-</button>
+                        {{item.counts}}
+                        <button @click="addCount(index,item)">+</button>
+                    </td>
+                    <td><button @click="delBooks(index,item)">移除</button></td>
+                </tr>
+                </tbody>
+            </table>
+            <h2>总计：{{formatPrice(getPriceSum)}}</h2>
+        </template>
+        <template v-else>
+            <h2>购物车为空</h2>
+        </template>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            // data option-api
+            data() {
+                return {
+                        books:[
+                            {
+                                id:1,
+                                name:"算法导论",
+                                date:"2022-09-12",
+                                price:120,
+                                counts:11,
+                            },
+                            {
+                                id:2,
+                                name:"C++",
+                                date:"2019-09-12",
+                                price:64,
+                                counts:9,
+                            },
+                            {
+                                id:3,
+                                name:"JAVA",
+                                date:"2020-09-12",
+                                price:90,
+                                counts:2,
+                            },
+                            {
+                                id:4,
+                                name:"js",
+                                date:"2020-03-12",
+                                price:140,
+                                counts:32,
+                            },
+                            {
+                                id:5,
+                                name:"js",
+                                date:"2020-03-12",
+                                price:1000,
+                                counts:32,
+                            }
+                        ],
+                    currentIndex:-1
+                }
+            },
+            created(){
+
+            },
+            methods: {
+                addCount(index,item){
+                //     通过索引 来控制每一条数据
+                //     this.books[index].counts++
+                    item.counts++
+
+                },
+                subtract(index,item){
+                    this.books[index].counts--
+                },
+                delBooks(index,item){
+                    this.books.splice(index, 1);
+                },
+                /*
+                抽取逻辑
+                 */
+                formatPrice(price){
+                    return "￥" + price
+                },
+                trClick(index){
+                    this.currentIndex = index
+                }
+            },
+            computed: {
+                getPriceSum(){
+                    /*
+                    计算总价:1.遍历
+                     */
+                    // for (let i = 0; i < this.books.length; i++) {
+                    //     this.sum = this.sum + (this.books[i].price*this.books[i].counts)
+                    // }
+                    // return this.sum
+                    /*
+                    for...in 只能读取键名
+                    for...of 循环读取键值
+                     */
+                    // let price = 0
+                    // for (const item of this.books) {
+                    //     price += item.price * item.counts
+                    // }
+                    // return price
+
+                //     2.reduce高阶函数  计算数组中所有元素的总和
+                    return this.books.reduce((previousValue,currentValue)=>{
+                        return previousValue + currentValue.price * currentValue.counts
+                    },0)
+                }
+            },
+            watch: {
+
+            }
+        })
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

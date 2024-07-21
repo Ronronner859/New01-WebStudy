@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script src="../lib/Vue.js"></script>
+    <div id="app">
+        <button @click="insert">插入f</button>
+        <ul>
+<!--            绑定key 而且是唯一的key-->
+            <li v-for="(item,index) in name" :key="index">{{item}}</li>
+        </ul>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    name: ['a', 'b', 'c'],
+                }
+            },
+            methods: {
+                insert(){
+                    this.name.splice(2, 0, 'f');
+                }
+            }
+        })
+        app.mount('#app');
+    </script>
+</body>
+
+</html>
