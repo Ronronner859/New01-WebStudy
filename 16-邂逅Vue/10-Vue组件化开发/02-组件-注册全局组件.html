@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .product{
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script src="../lib/Vue.js"></script>
+    <div id="app">
+<!--
+如果我们现在有一部分内容(模板、逻辑等)，我们希望将这部分内容抽取到一个独立的组件中去维护，这个时候如何注册一个
+组件呢?
+-->
+<!--        <h1>{{msg}}</h1>-->
+<!--        <div class="product">-->
+<!--            <h2>商品</h2>-->
+<!--            <p>这是商品信息</p>-->
+<!--        </div>-->
+
+<!--        使用product-item组件-->
+        <product-item></product-item>
+        <product-item></product-item>
+        <product-item></product-item>
+        <product-item></product-item>
+
+    </div>
+<!--    组件product-item的模板-->
+    <template id="item">
+        <div class="product">
+            <h2>商品</h2>
+            <p>这是商品信息11</p>
+        </div>
+    </template>
+    <script>
+//        1.组件 App组件 根组件
+        const App = {
+            data() {
+                return {
+                    msg:'hello'
+                }
+            },
+            methods: {
+
+            }
+        }
+        // 一个对象就是一个组件
+        // const productItem = {
+        //     template: `
+        //     <div class="product">
+        //     <h2>商品</h2>
+        //     <p>这是商品信息</p>
+        //    </div>
+        //     `
+        // }
+        // 2.创建app 注册全局组件
+        const app = Vue.createApp(App)
+        // 4.通过app.component(组件名称，组件对象)可以注册全局组件
+        app.component('product-item',{
+            template: `#item`
+        })
+
+        // 3.挂载
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

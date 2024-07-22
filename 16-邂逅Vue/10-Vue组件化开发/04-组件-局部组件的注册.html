@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .product{
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+<!--
+    问题：
+        1.html js都是一个在html中
+        2.模块和逻辑也都在一个html中
+        目前我们使用vue的过程都是在html文件中，通过template编写自己的模板、脚本逻辑、样式等。
+-->
+    <script src="../lib/Vue.js"></script>
+    <div id="app">
+        <h1>{{msg}}</h1>
+<!--        使用的时候用小写横线-->
+        <home-nav></home-nav>
+        <product-item></product-item>
+        <product-item></product-item>
+        <product-item></product-item>
+    </div>
+    <template id="item">
+        <div class="product">
+            <h2>{{message}}</h2>
+            <p>这是商品信息11</p>
+            <button @click="change">授权</button>
+        </div>
+    </template>
+
+    <template id="nav">
+        <div class="product">
+            <h2>{{message}} --- nav </h2>
+            <p>这是商品信息11</p>
+            <button @click="change">授权11</button>
+            <div>-------------------start--------</div>
+            <product-item></product-item>
+            <div>-------------------end--------</div>
+
+        </div>
+    </template>
+    <script>
+        const  ProductItem = {
+            template:`#item`,
+
+            data() {
+                return {
+                    message:'hello'
+                };
+            },
+            methods: {
+                change(){
+                    console.log('11')
+                }
+            }
+        }
+//        1.组件 App组件 根组件
+        const App = {
+            // 告诉vue 组件哪儿被使用
+            components: {
+                // 注册的时候用驼峰命名
+                ProductItem,
+                HomeNav:{
+                    template:`#nav`,
+                    components:{
+                      ProductItem
+                    },
+                    data() {
+                        return {
+                            message:'hello'
+                        };
+                    },
+                    methods: {
+                        change(){
+                            console.log('11')
+                        }
+                    }
+                }
+            },
+            data() {
+                return {
+                    msg:'hello'
+                }
+            },
+            methods: {
+
+            },
+            computed:{
+
+            },
+            watch:{
+
+            },
+
+        }
+        const app = Vue.createApp(App)
+
+        // app.component()
+
+
+        // 3.挂载
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

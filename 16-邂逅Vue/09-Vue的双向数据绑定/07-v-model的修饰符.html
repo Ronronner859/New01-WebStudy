@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+<!--
+lazy修饰符是什么作用呢?
+默认情况下，v-model在进行双向绑定时，绑定的是input事件，那么会在每次内容输入后就将最新的值和绑定的属性进行同
+步;
+如果我们在v-model后跟上lazy修饰符，那么会将绑定的事件切换为 change 事件，只有在提交时(比如回车)才会触发;
+-->
+    <script src="../lib/Vue.js"></script>
+    <div id="app">
+        <input type="text" v-model.lazy="msg">
+        <input type="text" v-model.number="num">
+        <h2>{{msg}}</h2>
+        <h2>{{num}} --- {{typeof num}}</h2>
+
+
+        <hr>
+        <input type="number" v-model.number="num">
+        <h2>{{num}} --- {{typeof num}}</h2>
+
+        <hr>
+        <input type="text" v-model.trim="content">
+        <h2>{{content}} --- {{typeof content}}</h2>
+
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    msg:'hello',
+                    num:0,
+                    content:""
+                }
+            },
+            methods: {
+
+            },
+            computed: {
+
+            }
+        })
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script src="../lib/Vue.js"></script>
+    <div id="app">
+<!--        绑定一下其他的表单类型:textarea、checkbox、radio、select-->
+        <textarea name="" id="" cols="30" rows="10" v-model="msg"> </textarea>
+        <h2>{{msg}}</h2>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    msg:'hello'
+                }
+            },
+            methods: {
+
+            },
+            computed: {
+
+            }
+        })
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

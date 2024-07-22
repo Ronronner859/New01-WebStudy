@@ -21,3 +21,12 @@
 ## v-for中的key有什么作用?什么是虚拟DOM?
 ## 什么是计算属性?和method有什么区别?
 ## 如何在Vue中侦听一个数据的改变?
+## v-model的原理?
+    官方有说到，v-model的原理其实是背后有两个操作:
+    v-bind绑定value属性的值;
+    v-on绑定input事件监听到函数中，函数会获取最新的值赋值到绑定的属性中
+## 如何手动实现v-model?
+## jsconfig的作用
+## vue不同版本对template的处理方式
+    默认vue版本:runtime，vue-loader元成template的编译过程
+    vue.esm-bundler:runtime+compile,对template进行屏译

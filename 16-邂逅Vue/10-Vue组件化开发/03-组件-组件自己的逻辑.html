@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .product{
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script src="../lib/Vue.js"></script>
+    <div id="app">
+        <hav-bar></hav-bar>
+        <product-item></product-item>
+        <product-item></product-item>
+        <product-item></product-item>
+        <product-item></product-item>
+        <hav-bar></hav-bar>
+    </div>
+<!--    组件product-item的模板-->
+    <template id="item">
+        <div class="product">
+            <h2>{{message}}</h2>
+            <p>这是商品信息11</p>
+            <button @click="change">授权</button>
+        </div>
+    </template>
+
+    <template id="hav">
+        <div class="bar">
+            <h1>导航栏 <span>{{yes}}</span></h1>
+        </div>
+    </template>
+    <script>
+//        1.组件 App组件 根组件
+        const App = {
+            data() {
+                return {
+                    msg:'hello'
+                }
+            },
+            methods: {
+
+            }
+        }
+        // 一个对象就是一个组件
+        // const productItem = {
+        //     template: `
+        //     <div class="product">
+        //     <h2>商品</h2>
+        //     <p>这是商品信息</p>
+        //    </div>
+        //     `
+        // }
+        // 2.创建app 注册全局组件
+        const app = Vue.createApp(App)
+        // 4.通过app.component(组件名称，组件对象)可以注册全局组件
+        app.component('product-item',{
+            template: `#item`,
+            data(){
+                return {
+                    message:"hello world"
+                }
+            },
+            methods:{
+                change(){
+                    console.log('收藏')
+                }
+            }
+        })
+        app.component("hav-bar",{
+            template:`#hav`,
+            data(){
+                return {
+                    yes:"yes"
+                }
+            }
+        })
+        // 3.挂载
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

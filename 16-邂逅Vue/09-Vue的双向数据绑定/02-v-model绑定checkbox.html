@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script src="../lib/Vue.js"></script>
+    <div id="app">
+<!--        绑定一下其他的表单类型:textarea、checkbox、radio、select
+                单个勾选框:
+                v-model即为布尔值，此时input的value属性并不影响v-model的值。
+-->
+        <textarea name="" id="" cols="30" rows="10" v-model="msg"> </textarea>
+        <label for="agree">
+            <input id="agree" type="checkbox" v-model="isAgree"> 同意协议
+        </label>
+        <h2>{{msg}}</h2>
+        <h2>{{isAgree}}</h2>
+
+<!--
+        多个复选框:
+            因为可以选中多个，所以对应的data中性是一个数组。当是多个复选框时，
+            当选中某一个时就会将input的value添加到数组中
+         单个复选框黄和多个复选框的不同之处
+-->
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    msg:'hello',
+                    isAgree: false
+                }
+            },
+            methods: {
+
+            },
+            computed: {
+
+            }
+        })
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

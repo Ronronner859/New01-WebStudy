@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+
+    <script src="../lib/Vue.js"></script>
+    <div id="app">
+        <h1>{{msg}}</h1>
+    </div>
+    <script>
+//        1.组件 App组件 根组件
+        const App = {
+            data() {
+                return {
+                    msg:'hello'
+                }
+            },
+            methods: {
+
+            }
+        }
+        // 2.创建app
+        const app = Vue.createApp(App)
+        // 3.挂载
+        app.mount('#app');
+    </script>
+</body>
+
+</html>
