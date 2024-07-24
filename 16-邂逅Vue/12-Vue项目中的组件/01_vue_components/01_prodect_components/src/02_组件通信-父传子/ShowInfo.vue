@@ -10,6 +10,8 @@ export default {
   //   age:Number,
   //   height:String
   // }
+
+  inheritAttrs:false,
   // 必须掌握
   props:{
     name:{
@@ -49,7 +51,7 @@ export default {
 
 <template>
   <div class="info">
-    <h2>{{name}}</h2>
+    <h2 :class="$attrs.class">{{name}}</h2>
     <h2>{{age}}</h2>
     <h3>{{height}}</h3>
     <h1>{{showMessage}}</h1>
