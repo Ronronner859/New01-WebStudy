@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello react</title>
+    <script src="../lib/react.js"></script>
+    <script src="../lib/react-dom.js"></script>
+    <script src="../lib/bable.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel" >
+        /*
+        1.只有一个根元素
+        2.为了方便阅读，我们通常在isx的外层包裹一个小括号(0)，这样可以方便阅读，并且isx可以进行换行书写
+         */
+
+        class App extends React.Component {
+            constructor() {
+                super()
+                this.state = {
+                    nums:100,
+                    names:["12","14"],
+                    str:"hello react",
+                    aaa:undefined,
+                    bbb:null,
+                    ccc:true,
+                    friend:{
+                        name:"hello"
+                    }
+                };
+
+            }
+            render() {
+                const  {names} = this.state
+                const {aaa,bbb,ccc} = this.state
+                const {friend} = this.state
+                return ((
+                    <div>
+                        {names}
+                        {/* jsx 文件中可以自动生成*/}
+                        <h1>{String(aaa)}</h1>
+                        <h1>{bbb + " "}</h1>
+                        <h1>{ccc}</h1>
+                        {/* 对象不能直接放*/}
+                        <h2>{friend.name}</h2>
+                        <h2>{Object.keys(friend)[0]}</h2>
+
+                    </div>
+                ))
+            }
+        }
+
+        const root = ReactDOM.createRoot(document.querySelector("#root"))
+        root.render(<App/>)
+    </script>
+</body>
+</html>

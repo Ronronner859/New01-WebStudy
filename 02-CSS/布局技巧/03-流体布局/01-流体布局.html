@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>流体布局</title>
+    <style>
+        .container::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .left{
+            float: left;
+            width: 100px;
+            height: 200px;
+            background-color: red;
+        }
+        .right{
+            float: right;
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+        }
+        .main{
+            margin-left: 120px;
+            margin-right: 220px;
+            height: 200px;
+            background-color:gold;
+        }
+        /*
+        这样设置后，左侧和右侧的浮动元素会占据固定的宽度和高度，并排在一起。
+        中间的内容区域会流动到浮动元素的下方，填充剩余的空间。
+        这样就实现了一个基本的流体布局，可以根据容器的大小自动适应屏幕或容器的宽度。
+         */
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="main"></div>
+    </div>
+</body>
+</html>

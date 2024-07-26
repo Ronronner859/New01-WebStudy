@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function Student(name,age,sex){
+            this.name = name;
+            this.age = age;
+            this.sex = sex
+
+        //     方式1 每次回创建很多函数对象
+        //   this.eating = function (){
+        //         console.log(this.name+'eating')
+        //     }
+        //   this.running = function (){
+        //         console.log(this.name+'eating')
+        //     }
+        }
+
+        // 方式2
+        Student.prototype.running = function (){
+            console.log(this.name+'eating')
+        }
+
+        // 创建两个学生
+        // 多个对象 有共同的值的时候，将他放到构造函数对象的显式原型
+        // 由构造函数创建的所有对象,会共享这些属性  ----------设计模式
+        const f1 = new Student('cy','12','nan')
+        const f2 = new Student('cy2','122','nan')
+
+        // 隐式原型的作用：
+        /*
+        1.f1 -的隐式原型： Student.prototype
+        2.f1.running查找：
+            自身查找，没有找到
+            去原型找
+         */
+        console.log(f1.running === f2.running)
+        // 隐式绑定指向对象本身
+        f1.running()
+        f2.running()
+    </script>
+</body>
+</html>

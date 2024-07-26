@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数原型的作用</title>
+</head>
+<body>
+    <script>
+        function foo() {
+        //     创建一个空对象
+        //     显----隐
+        }
+        console.log(foo.prototype)
+
+        var f = new foo()
+        console.log(f.__proto__)
+    </script>
+</body>
+</html>

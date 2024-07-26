@@ -1,11 +1,11 @@
 # Vue-认识基础语法【第一节】
 
-## Vue的引入方法
+## 1. Vue的引入方法
 
 - CDN引入
 - 本地引入
 
-## Vue动态的数据展示
+## 2. Vue动态的数据展示
 
 - 声明式编程  **面试题：声明式编程和命令式编程的区别？**
 
@@ -15,7 +15,7 @@
 
 ![image-20240721130626365](https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240721130626365.png)
 
-## Vue展示列表数据
+## 3. Vue展示列表数据
 
 - 数组如何渲染
 
@@ -42,18 +42,46 @@
     </script>
 ```
 
+## 4. Vue实现计数器【经典案例】
+
+```javascript
+ <script>
+        let title = "hello world"
+        const app = Vue.createApp({
+            template:`<h1>当前计数：{{counter}}</h1>
+                <button @click="fn1">+1</button>
+                <button @click="fn2">-1</button>
+            `,
+            data:function () {
+                return {
+                    counter:0
+                };
+            },
+            methods:{
+                fn1:function (){
+                    this.counter++
+                },
+                fn2:function (){
+                    this.counter--
+                }
+            }
+        })
+        console.log(app)
+        // 挂载
+        app.mount("#app")
+</script>
+```
 
 
-## Vue实现计数器【经典案例】
 
-## Option-api
+## 5. Option-api
 
 - data  面试题：为什么data是一个函数?
 - methods
 
-## Mystache双括号语法【大胡子语法】
+## 6. Mystache双括号语法【大胡子语法】
 
-## Vue的指令
+## 7. Vue的指令
 
 - v-once
 - v-text
@@ -62,9 +90,9 @@
 - v-cloak
 - v-memo
 
-### v-bind指令 
+### 7.1 v-bind指令 
 
-#### v-bind绑定基本属性
+#### 7.1.1 v-bind绑定基本属性
 
 >需要动态的改变页面的属性，通过v-bind来动态的绑定
 
@@ -117,7 +145,7 @@
 
 ```
 
-#### v-bind绑定class属性
+#### 7.1.2 v-bind绑定class属性-数组-对象的方式
 
 >需要动态的改变页面的样式，通过v-bind来动态的绑定样式。【不同的写法】
 
@@ -184,7 +212,9 @@
 
 ```
 
-#### v-bind绑定style属性
+![image-20240724213517490](https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240724213517490.png)
+
+#### 7.1.3 v-bind绑定style属性
 
 ```html
 <!DOCTYPE html>
@@ -245,13 +275,15 @@
 
 ```
 
-#### v-bind绑定属性名
+#### 7.1.4 v-bind绑定属性名
 
-#### v-bind直接绑定对象
+![image-20240724213631649](https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240724213631649.png)
+
+#### 7.1.5 v-bind直接绑定对象
 
 >一般在组件传值的时候可以用
 
-
+![image-20240724213759645](https://cysir-1314462720.cos.ap-nanjing.myqcloud.com/cysir-1314462720/myimage-20240724213759645.png)
 
 
 

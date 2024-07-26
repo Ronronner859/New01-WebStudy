@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello react</title>
+<!--    需要依赖三个包-->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<!--    babel 将jsx 转成 js-->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<!--    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>-->
+<!--    <script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.24.10/babel.min.js"></script>-->
+<!--    <script src="../js/babel.min.js"></script>-->
+</head>
+<body>
+    <div id="root">
+
+    </div>
+    <div id="app">
+
+    </div>
+    <script type="text/babel">
+       //  ReactDOM.render() react 18之前 的语法
+       // ReactDOM.render(vdom,document.getElementById('app'));
+       // 18以后
+       const root = ReactDOM.createRoot(document.querySelector('#root'));
+       root.render(<h1>Hello, world!</h1>);
+
+       // const app = ReactDOM.createRoot(document.querySelector('#app'));
+       // app.render(<h1>Hello, React!</h1>)
+    </script>
+</body>
+</html>

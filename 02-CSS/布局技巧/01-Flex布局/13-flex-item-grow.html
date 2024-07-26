@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    .container{
+        display: flex;
+        width: 700px;
+        height: 500px;
+        background-color: skyblue;
+
+        //align-items: center;
+
+    }
+    .item{
+        width: 120px;
+        height: 120px;
+        background-color: red;
+        //flex-grow: 1;
+    }
+    .item1{
+        //补充剩余空间
+        flex-grow: 2;
+    }
+    //.item2{
+    //    flex-grow: 1;
+    //}
+    //.item4{
+    //    flex-grow: 1;
+    //}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item item1">1</div>
+        <div class="item item2">2</div>
+        <div class="item item3">4</div>
+        <div class="item item4">4</div>
+
+
+
+    </div>
+    <script src="./js/itemRandomColor.js">
+    </script>
+</body>
+</html>

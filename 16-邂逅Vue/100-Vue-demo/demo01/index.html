@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/Vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <h1>{{msg}}</h1>
+            <button @click="changeMsg">改变内容</button>
+        </div>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return {
+                    msg:'hello world'
+                }
+            },
+            methods:{
+                changeMsg(){
+                    this.msg="hello Vue"
+                }
+            }
+        })
+        app.mount("#app")
+    </script>
+</body>
+</html>

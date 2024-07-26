@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello react</title>
+<!--    需要依赖三个包-->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<!--    babel 将jsx 转成 js-->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel" >
+        const root = ReactDOM.createRoot(document.querySelector('#root'));
+        let msg = "hello world"
+        function btnClick() {
+            msg = "Hello, React!"
+            root.render((
+                <div>
+                    <h1>{msg}</h1>
+                    <button onClick={btnClick}>改变内容</button>
+                </div>
+            ))
+        }
+        root.render((
+            <div>
+                <h1>{msg}</h1>
+                <button onClick={btnClick}>改变内容</button>
+            </div>
+        ))
+    </script>
+</body>
+</html>

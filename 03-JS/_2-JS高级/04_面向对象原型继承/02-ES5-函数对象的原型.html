@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数对象的原型</title>
+</head>
+<body>
+    <script>
+        var obj = {}
+        function foo() {}
+
+        console.log(obj.__proto__)
+        // 函数看成一个普通的对象，具备proto隐式原型
+        // 当key对应的value时，找到原型上
+        console.log(foo.__proto__)
+
+    //     函数看成一个函数时，具备prototype显式原型
+    //     作用：用来构建对象时，给对象设置隐式原型
+        console.log(foo.prototype)
+    </script>
+</body>
+</html>

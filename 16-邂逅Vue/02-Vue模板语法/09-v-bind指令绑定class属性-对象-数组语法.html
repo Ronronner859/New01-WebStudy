@@ -21,17 +21,17 @@
 
 <!--            动态class可以写对象语法-->
 <!--            我们可以传给:class (v-bind:class 的简写)一个对象，以动态地切换 class-->
-<!--            <button :class="{active:isActive}" @click="btnClick" >按钮</button>-->
+            <button :class="{active:isActive}" @click="btnClick" >按钮</button>
 
 <!--            对象语法的多个键值对-->
 <!--            <button :class="{active:isActive,why:true}" @click="btnClick" >按钮</button>-->
 
 
 <!--            动态绑定的class是可以和普通的class同时的使用 ~!!!!!!!!!!!!!!!!!!-->
-            <button class="demo" :class="getDynamicClass()" @click="btnClick" >按钮</button>
+<!--            <button class="demo" :class="getDynamicClass()" @click="btnClick" >按钮</button>-->
 
-            <h1 :class="['abc','def']">hello</h1>
-            <h1 :class="['abc',className,getDynamicClass()]">hello</h1>
+<!--            <h1 :class="['abc','def']">hello</h1>-->
+<!--            <h1 :class="['abc',className,getDynamicClass()]">hello</h1>-->
 
         </div> 
         <script>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello react</title>
+    <script src="../lib/react.js"></script>
+    <script src="../lib/react-dom.js"></script>
+    <script src="../lib/bable.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel" >
+
+
+        class App extends React.Component {
+            constructor() {
+                super()
+                this.state = {
+                    nums:100
+                };
+                this.addNums = this.addNums.bind(this);
+                this.subNums = this.addNums.bind(this);
+            }
+            addNums(){
+                this.setState({
+                    nums:this.state.nums + 1
+                })
+            }
+            subNums(){
+                this.setState({
+                    nums:this.state.nums - 1
+                })
+            }
+            render() {
+                const  {nums}  = this.state
+                return (
+                    <div>
+                        <h1>简易计数器：{nums}</h1>
+                        <button onClick={this.addNums}>+1</button>
+                        <button onClick={this.subNums}>-1</button>
+                    </div>
+                )
+            }
+        }
+
+        const root = ReactDOM.createRoot(document.querySelector("#root"))
+        root.render(<App/>)
+    </script>
+</body>
+</html>

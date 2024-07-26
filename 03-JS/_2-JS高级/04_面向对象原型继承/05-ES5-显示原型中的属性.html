@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>显示原型中的属性</title>
+</head>
+<body>
+    <script>
+        function Person(){
+
+
+        }
+
+        console.log(Person.prototype)
+    //     prototype属性
+        Person.prototype.running = function (){}
+        Person.prototype.message = "hello world"
+
+        const f = new Person()
+        console.log(f.message)
+        console.log(Person.prototype.constructor)
+        console.log(Person.name)
+    </script>
+</body>
+</html>

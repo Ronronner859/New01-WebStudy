@@ -20,4 +20,4 @@ function test(fn){
     fn()
 }
 test(obj.bar);
-//4.严格模式下 独立调用的函数的this指向是指向undefined
+//4.严格模式下 独立调用的函数的this指向是指向undefined 默认绑定下

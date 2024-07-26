@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello react</title>
+    <script src="../lib/react.js"></script>
+    <script src="../lib/react-dom.js"></script>
+    <script src="../lib/bable.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel" >
+
+
+        class App extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    movies:['火影','抓娃娃','无间道']
+                }
+            }
+            render() {
+                let movies = this.state.movies.map(itemEls => <li>{itemEls}</li>)
+                return (
+                    <div>
+                        <h1>电影列表</h1>
+                        <ul>
+                            {movies}
+                        </ul>
+                    </div>
+                )
+            }
+        }
+
+        const root = ReactDOM.createRoot(document.querySelector("#root"))
+        root.render(<App/>)
+    </script>
+</body>
+</html>
