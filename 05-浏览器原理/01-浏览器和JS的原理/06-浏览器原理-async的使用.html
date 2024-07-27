@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--defer属性-->
+<!--    :浏览器指示脚本在文档被解析后执行，script被异步加载后并不会立刻执行，而是等待文档被解析完毕后执行。-->
+<script src="./js/index.js" async></script>
+
+<!--
+    同样是异步加载脚本，区别是脚本加载完毕后立即执行，
+    这导致async属性下的脚本是乱序的，
+     对于 script 有先后依赖关系的情况，并不适用
+-->
+<h2>红红火火恍恍惚惚哈哈哈哈</h2>
+</body>
+</html>

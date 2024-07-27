@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变量查找作用域</title>
+</head>
+<body>
+    <script>
+        console.log(message)
+
+        var message = "global message"
+
+        function foo(){
+            // var message = "foo message"
+            console.log(message)
+        }
+
+
+        var  obj = {
+            name:"cy",
+            bar:function(){
+                var message = "bar message"
+                foo()
+            }
+        }
+        obj.bar()
+    </script>
+</body>
+</html>

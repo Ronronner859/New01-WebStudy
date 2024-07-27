@@ -5,6 +5,23 @@
     <title>变量查找作用域</title>
 </head>
 <body>
+    <script>
+        var message = "Global message"
 
+        function foo() {
+            var message = "foo message"
+
+            function bar(){
+                var message = "bar message"
+                console.log(message)
+            }
+
+            return bar
+        }
+
+        var bar = foo()
+
+        bar()
+    </script>
 </body>
 </html>

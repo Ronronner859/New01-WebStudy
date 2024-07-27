@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+//       ES6  展开运算符就是一种浅拷贝
+//        1.对数组的展开
+        var names = ["hello", '12', 'ad'];
+
+        var newNames = [...names,"aaa","bbb"]
+        console.log(newNames)
+        // concat 合并两个数组，不改变原来的数组
+        var newNames3 = names.concat(newNames)
+        console.log(newNames3)
+        // 2.对字符串的展开
+        var str = "hello world"
+        function  foo(name,age,...arg){
+            console.log(name,age,arg)
+        }
+
+
+        foo(...names)
+        foo(...str)
+
+    // es9 针对对象进行展开
+        const obj = {
+            name:"why",
+            age:3,
+        }
+        // foo(...obj)  // 在函数调用的时候，展开运算符，对应的展开数据，进行迭代
+    //     可迭代对象 ，数组，字符串，arguments
+        const info = {
+            ...obj,
+            height:1.98,
+            address:'广州市'
+        }
+        console.log(info)
+    </script>
+</body>
+</html>
