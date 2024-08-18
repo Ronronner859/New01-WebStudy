@@ -2,56 +2,66 @@
 import {computed} from "vue";
 
 const props = defineProps({
-  list:{
-    type: Array,
-    default:()=>([])
+  itemData:{
+    type: Object,
+    default:()=>({})
   }
 })
+
 // 定义计算属性
 const textTitle = computed(() => {
-  console.log(props.list)
-  return  props.list.forEach(item=>{item.verify_info.messages.join(" ")})
-  // return props.list.verify_info.messages.join(" ")
+  return props.itemData.verify_info.messages.join(" ")
 })
+// 整合
+const textDescription = computed(() => {
+  return {
+    textTitle:props.itemData.verify_info.messages.join(" "),
+    textColor:props.itemData.verify_info.text_color
+  }
+})
+console.log(props.itemData.bottom_info)
+const textBottom = computed(() => {
+  return {
+    conts:props.itemData.bottom_info.content,
+    style:{
+      color:props.itemData.bottom_info.content_color,
+      fontSize:props.itemData.bottom_info.font_size + "px"
+    }
+  }
+})
+
+// console.log(textTitle.value)
 </script>
 
 <template>
-  <div class="room-list">
-    <!--    遍历尽量用template-->
-    <template v-for="item in list" :key="item.id">
-      <div class="room-item">
-        <div class="item-inner">
-          <div class="cover">
-            <img :src="item.picture_url" alt="">
-          </div>
-          <div class="info">
-            <div class="title">
-<!--              计算属性来处理 -->
-
-              {{item.verify_info.messages.join(" ")}}
-<!--              {{textTitle}}-->
-            </div>
-            <div class="name">
-              {{item.name}}
-            </div>
-            <div class="price">
-              {{item.price_format + "/晚"}}
-            </div>
-            <div class="bottom-info">
-              {{item.bottom_info.content}}
-            </div>
-          </div>
+  <div class="room-item">
+    <div class="item-inner">
+      <div class="cover">
+        <img :src="itemData.picture_url" alt="">
+      </div>
+      <div class="info">
+        <div class="title" :style="{color:textDescription.textColor}">
+          <!--              计算属性来处理 -->
+          {{textDescription.textTitle}}
+        </div>
+        <div class="name">
+          {{itemData.name}}
+        </div>
+        <div class="price">
+          {{itemData.price_format + "/晚"}}
+        </div>
+        <div class="bottom-info" :style="textBottom.style">
+          {{textBottom.conts}}
+<!--          {{textBottom.content}}-->
         </div>
       </div>
-    </template>
+    </div>
   </div>
+
 </template>
 
 <style scoped>
-.room-list{
-  display: flex;
-  flex-wrap: wrap;
-  margin: 20px -8px;
+
   .room-item{
     width: 33.33333%;
 
@@ -86,5 +96,5 @@ const textTitle = computed(() => {
       }
     }
   }
-}
+
 </style>
